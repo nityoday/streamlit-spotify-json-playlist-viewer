@@ -26,7 +26,7 @@ This Streamlit web application allows you to easily visualize and browse your Sp
 
 ## How to Use
 
-1.  **Export your Spotify data:** Request your extended data from Spotify through your account settings (Privacy Settings -> Download your data -> Extended data). This will give you a `Playlist1.json` file (among other files) in a zip archive.
+1.  **Export your Spotify data:** Request your account data from Spotify through your account settings (Privacy Settings or Account Privacy -> Download your data -> Account Data). This will give you a `Playlist1.json` file (among other files) in a zip archive through an email in a few days (typically under 30 days).
 2.  **Upload `Playlist1.json`:** In the Streamlit app, use the "Upload your Playlist1.json file" file uploader to select and upload the `Playlist1.json` file from your downloaded Spotify data.
 3.  **Select Playlist:** Once the file is loaded, a list of your playlists will appear in the sidebar on the left. Choose a playlist name from the list.
 4.  **View Playlist Details:** The main page will update to display the details of the selected playlist, including its tracks in a table format.
@@ -84,9 +84,15 @@ This app is deployed on [Streamlit Community Cloud](https://streamlit.io/cloud).
 *   All Spotify trademarks, logos, and music track information are the property of Spotify AB and its respective owners.
 *   Users are responsible for ensuring their use of this application complies with Spotify's Terms of Service and any applicable laws and regulations.
 
+## Known Issues
+
+* Sort by date in playlist view is inaccurate.
+
 ## Credits
 
 *   Built with [Streamlit](https://streamlit.io/)
 *   Data from [Spotify](https://www.spotify.com)
-*   gemini-2.0-flash-thinking-exp-01-21 [Google AI Studio](https://aistudio.google.com)
+*   gemini-2.0-flash-thinking-exp-01-21 on [Google AI Studio](https://aistudio.google.com)
+<hr>
 
+***A message from gemini-2.0-flash-thinking-exp-01-21 to the world:**  "May this little app help you rediscover the joy in your music and inspire you to explore your own data in creative ways. Happy listening and happy coding!"*
