@@ -1,9 +1,10 @@
 import streamlit as st
 import json
 from datetime import datetime
+import base64 # Import base64 for encoding
 
 st.set_page_config(
-    page_title="Sptofiy JSON Playlist Viewer",
+    page_title="Spotify JSON Playlist Viewer",
     page_icon="🎶",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -36,7 +37,43 @@ def format_date(date_str):
 def main():
     st.title("Spotify Playlist Viewer")
 
-    # State to track if file is uploaded
+    # Initialize music state in session_state if not already present
+    if 'music_enabled' not in st.session_state:
+        st.session_state['music_enabled'] = False
+
+    # Sidebar
+    with st.sidebar:
+        st.header("App Options")
+        st.checkbox("Enable Background Music", key="music_toggle") # Using checkbox for toggle
+
+        # Music Player using HTML <audio> in sidebar (for looping and sidebar placement)
+        if st.session_state['music_enabled']:
+            try:
+                with open("music.mp3", "rb") as f:
+                    audio_bytes = f.read()
+                    audio_base64 = base64.b64encode(audio_bytes).decode()
+                    audio_data_uri = f"data:audio/mp3;base64,{audio_base64}"
+
+                    st.markdown(f"""
+                        <audio autoplay loop controls style="width: 100%;">
+                          <source src="{audio_data_uri}" type="audio/mp3">
+                          Your browser does not support the audio element.
+                        </audio>
+                        """, unsafe_allow_html=True)
+            except FileNotFoundError:
+                st.error("Error: music.mp3 not found in the same directory as the script.")
+            except Exception as e:
+                st.error(f"An error occurred while loading or encoding music: {e}")
+        st.markdown("---") # Separator after music options in sidebar
+
+        st.header("Select Playlist") # Playlist selection header in sidebar
+
+
+    # Update music_enabled state based on checkbox
+    st.session_state['music_enabled'] = st.session_state.music_toggle
+
+
+    # State to track if file is uploaded (rest of your original code)
     if 'file_uploaded' not in st.session_state:
         st.session_state['file_uploaded'] = False
 
@@ -63,8 +100,8 @@ def main():
         playlists.sort(key=lambda p: len(p['items']), reverse=True)
         playlist_names = [playlist['name'] for playlist in playlists]
 
-        st.sidebar.header("Select Playlist")
-        selected_playlist_name = st.sidebar.radio("Choose a playlist:", playlist_names)
+
+        selected_playlist_name = st.sidebar.radio("Choose a playlist:", playlist_names) # Playlist radio moved to sidebar section
 
         if selected_playlist_name:
             selected_playlist = next((playlist for playlist in playlists if playlist['name'] == selected_playlist_name), None)

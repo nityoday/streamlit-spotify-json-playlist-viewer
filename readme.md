@@ -23,6 +23,7 @@ This Streamlit web application allows you to easily visualize and browse your Sp
     *   Added Date (formatted as DD-MMM-YYYY)
 *   **File Upload:**  Allows you to upload your `Playlist1.json` file directly through the web interface.
 *   **Clean UI:**  Uses a list-based playlist selector in the sidebar and displays track data in a wide, readable table.
+*   **Background Music:**  Gives an option to enable background music for when you are browsing your playlist data.
 
 ## How to Use
 
@@ -87,6 +88,7 @@ This app is deployed on [Streamlit Community Cloud](https://streamlit.io/cloud).
 ## Known Issues
 
 * Sort by date in playlist view is inaccurate.
+* Background music checkbox updations only take effect when another element is selected, such as a different playlist to view or selecting a json file
 
 ## Credits
 
