@@ -42,7 +42,7 @@ def main():
 
     # File uploader widget (initially visible)
     if not st.session_state['file_uploaded']:
-        uploaded_file = st.file_uploader("Upload your Playlist1.json file", type=["json"], key="file_uploader")
+        uploaded_file = st.file_uploader("Upload your Playlist1.json or json file for playlist here", type=["json"], key="file_uploader")
 
         if uploaded_file is not None:
             playlist_data = load_playlist_data(uploaded_file)
