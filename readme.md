@@ -2,10 +2,6 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://spotify-playlist-json.streamlit.app/) 
 
-<a href="https://spotify-playlist-json.streamlit.app/" target="_blank">
-  <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Streamlit App">
-</a>
-
 ## Overview
 
 This Streamlit web application allows you to easily visualize and browse your Spotify playlists directly from your Spotify account data.  It reads a `Playlist1.json` file (exported from your Spotify account data request) and presents your playlists in a user-friendly interface.
